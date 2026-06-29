@@ -432,15 +432,36 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 .ba-panel p{color:var(--muted);font-size:.82rem;line-height:1.6;max-width:280px}
 .ba-divider{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--border);display:none}
 
-/* ── PORTFOLIO SHOWCASE ── */
-.port-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.3rem;margin-top:3.5rem}
-.port-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;transition:border-color .35s,transform .35s,box-shadow .35s}
-.port-card:hover{border-color:rgba(0,245,212,.3);transform:translateY(-6px);box-shadow:0 22px 54px rgba(0,0,0,.42),var(--glow)}
-.port-thumb{height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,rgba(0,245,212,.1),rgba(123,47,255,.1));border-bottom:1px solid var(--border);font-family:var(--font-d);font-size:.85rem;color:var(--neon);letter-spacing:.5px;text-align:center;padding:1rem}
-.port-info{padding:1.4rem 1.5rem}
-.port-info h4{font-family:var(--font-h);font-size:.95rem;font-weight:700;margin-bottom:.4rem}
-.port-info p{color:var(--muted2);font-size:.78rem;line-height:1.6}
-.port-soon{font-family:var(--font-h);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:.6rem}
+/* ── PORTFOLIO SHOWCASE (placeholder cards, distinct from homepage .port-card image gallery) ── */
+.bport-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.3rem;margin-top:3.5rem}
+.bport-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;transition:border-color .35s,transform .35s,box-shadow .35s}
+.bport-card:hover{border-color:rgba(0,245,212,.3);transform:translateY(-6px);box-shadow:0 22px 54px rgba(0,0,0,.42),var(--glow)}
+.bport-thumb{height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,rgba(0,245,212,.1),rgba(123,47,255,.1));border-bottom:1px solid var(--border);font-family:var(--font-d);font-size:.85rem;color:var(--neon);letter-spacing:.5px;text-align:center;padding:1rem}
+.bport-info{padding:1.4rem 1.5rem}
+.bport-info h4{font-family:var(--font-h);font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.bport-info p{color:var(--muted2);font-size:.78rem;line-height:1.6}
+.bport-soon{font-family:var(--font-h);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:.6rem}
+
+/* ── BRAND IDENTITY SHOWCASE (real image gallery + lightbox) ── */
+.bis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;margin-top:3.5rem}
+.bis-card{border-radius:var(--rl);overflow:hidden;position:relative;background:var(--bg2);border:1px solid var(--border);aspect-ratio:4/3;transition:border-color .35s,transform .4s,box-shadow .4s;cursor:pointer}
+.bis-card:hover{border-color:rgba(0,245,212,.3);transform:translateY(-6px);box-shadow:0 22px 56px rgba(0,0,0,.5),var(--glow)}
+.bis-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease,filter .4s ease;background:var(--bg2)}
+.bis-card:hover .bis-img{transform:scale(1.05);filter:brightness(.72)}
+.bis-ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;background:linear-gradient(to top,rgba(5,5,8,.95) 0%,rgba(5,5,8,.25) 60%,transparent 100%);transform:translateY(6px);opacity:0;transition:all .4s}
+.bis-card:hover .bis-ov{opacity:1;transform:translateY(0)}
+.bis-tag{display:inline-flex;align-items:center;gap:6px;color:var(--text);font-family:var(--font-h);font-size:.92rem;font-weight:700}
+.bis-zoom{width:30px;height:30px;border-radius:50%;background:rgba(0,245,212,.14);border:1px solid rgba(0,245,212,.3);color:var(--neon);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;position:absolute;top:1.2rem;right:1.2rem;opacity:0;transition:opacity .3s}
+.bis-card:hover .bis-zoom{opacity:1}
+
+/* ── BRAND IDENTITY LIGHTBOX ── */
+.bis-lightbox{position:fixed;inset:0;background:rgba(5,5,8,.97);backdrop-filter:blur(20px);z-index:1200;display:none;align-items:center;justify-content:center;padding:5vh 5vw}
+.bis-lightbox.open{display:flex}
+.bis-lightbox-inner{position:relative;max-width:min(920px,90vw);max-height:86vh;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.bis-lightbox-inner img{max-width:100%;max-height:72vh;border-radius:var(--rl);border:1px solid var(--border);object-fit:contain;background:var(--bg2)}
+.bis-lightbox-caption{font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--text)}
+.bis-lightbox-close{position:absolute;top:-46px;right:0;width:38px;height:38px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:border-color .25s,color .25s}
+.bis-lightbox-close:hover{border-color:rgba(0,245,212,.4);color:var(--neon)}
 
 /* ── STYLE GUIDE PREVIEW ── */
 .style-guide{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:2.2rem;margin-top:3.5rem}
@@ -872,6 +893,67 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
+<!-- ═══════ BRAND IDENTITY SHOWCASE ═══════ -->
+<section class="pad" id="brand-showcase">
+  <div class="eyebrow">Brand Identity Showcase</div>
+  <h2 class="sec-title rv">A Look Into Our <span class="grad">Branding Work</span></h2>
+  <p style="color:var(--muted);font-size:.92rem;line-height:1.8;max-width:680px;margin-top:1rem">Explore a selection of our branding projects that demonstrate how we create memorable and consistent brand identities.</p>
+
+  <div class="bis-grid rv2">
+    <div class="bis-card" onclick="openBisLightbox('/assets/images/branding/logo-design.webp','Logo Design')" role="button" tabindex="0" aria-label="View Logo Design full size">
+      <img src="/assets/images/branding/logo-design.webp" alt="Logo Design — branding project by JUSTDOWOW" class="bis-img" loading="lazy">
+      <span class="bis-zoom">⤢</span>
+      <div class="bis-ov"><span class="bis-tag">Logo Design</span></div>
+    </div>
+    <div class="bis-card" onclick="openBisLightbox('/assets/images/branding/brand-identity.webp','Brand Identity')" role="button" tabindex="0" aria-label="View Brand Identity full size">
+      <img src="/assets/images/branding/brand-identity.webp" alt="Brand Identity — branding project by JUSTDOWOW" class="bis-img" loading="lazy">
+      <span class="bis-zoom">⤢</span>
+      <div class="bis-ov"><span class="bis-tag">Brand Identity</span></div>
+    </div>
+    <div class="bis-card" onclick="openBisLightbox('/assets/images/branding/business-card-design.webp','Business Card Design')" role="button" tabindex="0" aria-label="View Business Card Design full size">
+      <img src="/assets/images/branding/business-card-design.webp" alt="Business Card Design — branding project by JUSTDOWOW" class="bis-img" loading="lazy">
+      <span class="bis-zoom">⤢</span>
+      <div class="bis-ov"><span class="bis-tag">Business Card Design</span></div>
+    </div>
+    <div class="bis-card" onclick="openBisLightbox('/assets/images/branding/packaging-design.webp','Packaging Design')" role="button" tabindex="0" aria-label="View Packaging Design full size">
+      <img src="/assets/images/branding/packaging-design.webp" alt="Packaging Design — branding project by JUSTDOWOW" class="bis-img" loading="lazy">
+      <span class="bis-zoom">⤢</span>
+      <div class="bis-ov"><span class="bis-tag">Packaging Design</span></div>
+    </div>
+    <div class="bis-card" onclick="openBisLightbox('/assets/images/branding/social-media-branding.webp','Social Media Branding')" role="button" tabindex="0" aria-label="View Social Media Branding full size">
+      <img src="/assets/images/branding/social-media-branding.webp" alt="Social Media Branding — branding project by JUSTDOWOW" class="bis-img" loading="lazy">
+      <span class="bis-zoom">⤢</span>
+      <div class="bis-ov"><span class="bis-tag">Social Media Branding</span></div>
+    </div>
+    <div class="bis-card" onclick="openBisLightbox('/assets/images/branding/brand-guidelines.webp','Brand Guidelines')" role="button" tabindex="0" aria-label="View Brand Guidelines full size">
+      <img src="/assets/images/branding/brand-guidelines.webp" alt="Brand Guidelines — branding project by JUSTDOWOW" class="bis-img" loading="lazy">
+      <span class="bis-zoom">⤢</span>
+      <div class="bis-ov"><span class="bis-tag">Brand Guidelines</span></div>
+    </div>
+    <div class="bis-card" onclick="openBisLightbox('/assets/images/branding/store-signage.webp','Store Signage')" role="button" tabindex="0" aria-label="View Store Signage full size">
+      <img src="/assets/images/branding/store-signage.webp" alt="Store Signage — branding project by JUSTDOWOW" class="bis-img" loading="lazy">
+      <span class="bis-zoom">⤢</span>
+      <div class="bis-ov"><span class="bis-tag">Store Signage</span></div>
+    </div>
+    <div class="bis-card" onclick="openBisLightbox('/assets/images/branding/website-branding.webp','Website Branding')" role="button" tabindex="0" aria-label="View Website Branding full size">
+      <img src="/assets/images/branding/website-branding.webp" alt="Website Branding — branding project by JUSTDOWOW" class="bis-img" loading="lazy">
+      <span class="bis-zoom">⤢</span>
+      <div class="bis-ov"><span class="bis-tag">Website Branding</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BRAND IDENTITY LIGHTBOX ═══════ -->
+<div class="bis-lightbox" id="bisLightbox" role="dialog" aria-modal="true" aria-label="Branding project preview" onclick="if(event.target===this)closeBisLightbox()">
+  <div class="bis-lightbox-inner">
+    <button class="bis-lightbox-close" onclick="closeBisLightbox()" aria-label="Close preview">&#x2715;</button>
+    <img id="bisLightboxImg" src="" alt="">
+    <div class="bis-lightbox-caption" id="bisLightboxCaption"></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
 <!-- ═══════ OUR BRANDING PROCESS ═══════ -->
 <section class="pad" id="process">
   <div class="eyebrow">Our Branding Process</div>
@@ -1023,60 +1105,6 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- ═══════ PORTFOLIO SHOWCASE ═══════ -->
-<section class="pad" id="portfolio">
-  <div class="eyebrow">Portfolio Showcase</div>
-  <h2 class="sec-title rv">A Glimpse Into <span class="grad">Our Creative Work</span></h2>
-  <p style="color:var(--muted);font-size:.92rem;line-height:1.8;max-width:680px;margin-top:1rem">Sample project categories from our branding work — full case studies coming soon.</p>
-
-  <div class="port-grid rv2">
-    <div class="port-card">
-      <div class="port-thumb" aria-label="Logo design project placeholder">Logo Design</div>
-      <div class="port-info">
-        <h4>Logo Design Projects</h4>
-        <p>Distinctive marks built for brand recognition.</p>
-        <span class="port-soon">Case Study Coming Soon</span>
-      </div>
-    </div>
-    <div class="port-card">
-      <div class="port-thumb" aria-label="Social media branding project placeholder">Social Branding</div>
-      <div class="port-info">
-        <h4>Social Media Branding</h4>
-        <p>Consistent templates across Instagram and Facebook.</p>
-        <span class="port-soon">Case Study Coming Soon</span>
-      </div>
-    </div>
-    <div class="port-card">
-      <div class="port-thumb" aria-label="Brand identity project placeholder">Brand Identity</div>
-      <div class="port-info">
-        <h4>Brand Identity Projects</h4>
-        <p>Complete visual systems built from strategy up.</p>
-        <span class="port-soon">Case Study Coming Soon</span>
-      </div>
-    </div>
-    <div class="port-card">
-      <div class="port-thumb" aria-label="Packaging design project placeholder">Packaging</div>
-      <div class="port-info">
-        <h4>Packaging Design</h4>
-        <p>On-brand packaging that stands out on the shelf.</p>
-        <span class="port-soon">Case Study Coming Soon</span>
-      </div>
-    </div>
-    <div class="port-card">
-      <div class="port-thumb" aria-label="Marketing creatives project placeholder">Creatives</div>
-      <div class="port-info">
-        <h4>Marketing Creatives</h4>
-        <p>On-brand creatives for campaigns across every channel.</p>
-        <span class="port-soon">Case Study Coming Soon</span>
-      </div>
-    </div>
-  </div>
-  <div style="margin-top:2rem">
-    <a href="case-studies.html" class="svc-link">View Full Case Studies →</a>
-  </div>
-</section>
 
 <!-- ═══════ FREE BRAND CONSULTATION CTA ═══════ -->
 <div class="cta-banner rv">
@@ -1485,6 +1513,35 @@ function toggleFaq(el){
     item.querySelector('.faq-q-mark').textContent='+';
   }
 }
+
+// Brand Identity Showcase lightbox
+function openBisLightbox(src, caption){
+  const lb = document.getElementById('bisLightbox');
+  const img = document.getElementById('bisLightboxImg');
+  const cap = document.getElementById('bisLightboxCaption');
+  img.src = src;
+  img.alt = caption + ' — full size preview';
+  cap.textContent = caption;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeBisLightbox(){
+  const lb = document.getElementById('bisLightbox');
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeBisLightbox();
+});
+// Allow keyboard activation (Enter/Space) on showcase cards for accessibility
+document.querySelectorAll('.bis-card').forEach(function(card){
+  card.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      card.click();
+    }
+  });
+});
 </script>
 </body>
 </html>
